@@ -1,0 +1,104 @@
+.hero_section_wrapper {
+    background-image: url(../assets/hero-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .hero_content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+ 
+  .hero_content h1 {
+    font-size: 5rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  
+  .hero_content p {
+    font-size: 1.25rem;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  
+  .buttons_container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  
+  .projects_button,
+  .ideas_button {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .projects_button:hover,
+  .ideas_button:hover {
+    background-color: #0056b3;
+  }
+  
+  .projects_button a,
+  .ideas_button a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .hero_section_wrapper {
+      padding: 50px 20px;
+      text-align: left; 
+    }
+  
+    .hero_content {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  
+    
+    .hero_content h1 {
+      font-size: 3rem; 
+      margin-bottom: 15px;
+    }
+  
+    
+    .hero_content p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  
+    
+    .buttons_container {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    
+    .projects_button,
+    .ideas_button {
+      width: 100%; 
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
+  
