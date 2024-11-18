@@ -7,7 +7,9 @@ import compression from "compression"
 import morgan from "morgan"
 import cookieParser from "cookie-parser"
 import connectdb from "./src/Config/Database.js"
-
+import ProjectRoutes from "./src/Routes/ProjectsRoutes.js"
+import IdeasRouter from "./src/Routes/IdeasRoutes.js"
+ 
 dotenv.config({
     path:'./.env'
 })
@@ -33,7 +35,8 @@ app.use((err, req, res, next) => {
 app.get("/api/v1", (req, res) => {
     res.send("Backend is running!");
 });
-
+app.use('/api/v1/projects',ProjectRoutes)
+app.use('/api/v1/ideas',IdeasRouter)
 
 // db connection
 connectdb()

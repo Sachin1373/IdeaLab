@@ -1,104 +1,194 @@
 .hero_section_wrapper {
-    background-image: url(../assets/hero-background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
-  }
+  background-image: url(../assets/hero-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center;  */
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero_content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero_content h1 {
+  font-size: 5rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero_content p {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.buttons_container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.projects_button,
+.ideas_button {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.projects_button:hover,
+.ideas_button:hover {
+  background-color: #0056b3;
+}
+
+.projects_button a,
+.ideas_button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.demo_projects_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-around; /* Center horizontally */
+  width: 80%; 
+  margin-left: 150px;
+  margin-bottom: 50px;
+  background-color: rgb(238, 244, 254);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 500px; 
+ 
+}
+
+.demo_ideas_wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-around; /* Center horizontally */
+  width: 80%; 
+  margin-left: 150px;
+  margin-bottom: 50px;
+  background-color: rgb(238, 244, 254);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 500px; 
+}
+
+.cards {
+  display: flex;
+  padding-left: 30px;
+  gap: 20px;
+  width: 100%;
   
+}
+
+.viewallbtn {
+  background-color: #0056b3;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.viewallbtn:hover {
+  background-color: #0056c8;
+}
+
+.viewallbtn:focus {
+  outline: none;
+}
+
+.demo_blogs_wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-around; /* Center horizontally */
+  width: 80%; 
+  margin-left: 150px;
+  margin-bottom: 50px;
+  background-color: rgb(238, 244, 254);
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 500px; 
+}
+
+@media (max-width: 768px) {
+  .hero_section_wrapper {
+    padding: 50px 20px;
+    text-align: left;
+  }
+
   .hero_content {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
     padding: 0 20px;
   }
-  
- 
+
   .hero_content h1 {
-    font-size: 5rem;
-    color: #333;
-    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .hero_content p {
+    font-size: 1rem;
     margin-bottom: 20px;
   }
-  
-  
-  .hero_content p {
-    font-size: 1.25rem;
-    color: #555;
-    margin-bottom: 40px;
-  }
-  
-  
+
   .buttons_container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 15px;
   }
-  
-  
+
   .projects_button,
   .ideas_button {
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
   }
-  
-  .projects_button:hover,
-  .ideas_button:hover {
-    background-color: #0056b3;
+  .demo_projects_wrapper {
+    width: 90%; 
+    margin: 0 auto;
+    margin-top: 280px;
+
   }
-  
-  .projects_button a,
-  .ideas_button a {
-    text-decoration: none;
-    color: inherit;
+
+  .demo_ideas_wrapper{
+    width: 90%; 
+    margin: 50px auto; 
   }
-  
-  
-  @media (max-width: 768px) {
-    .hero_section_wrapper {
-      padding: 50px 20px;
-      text-align: left; 
-    }
-  
-    .hero_content {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  
-    
-    .hero_content h1 {
-      font-size: 3rem; 
-      margin-bottom: 15px;
-    }
-  
-    
-    .hero_content p {
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-  
-    
-    .buttons_container {
-      flex-direction: column;
-      gap: 15px;
-    }
-  
-    
-    .projects_button,
-    .ideas_button {
-      width: 100%; 
-      font-size: 1rem;
-      padding: 10px;
-    }
+  .demo_blogs_wrapper{
+    width: 90%; 
+    margin: 50px auto; 
+    text-align: center;
   }
-  
+  .cards {
+    flex-direction: column; 
+    padding-left: 0;
+  }
+
+  .card_wrapper {
+    width: 100%; 
+    margin-left: 0; 
+    margin-bottom: 20px; 
+  }
+}
