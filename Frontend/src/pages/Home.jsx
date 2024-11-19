@@ -90,11 +90,11 @@ function Home() {
           <p>Share your ideas, showcase your projects, and collaborate with like-minded individuals who complement your skills.</p>
 
           <div className={styles.buttons_container}>
-            <button className={styles.projects_button}>
-              <span onClick={handlePostProject}>Post Your Projects</span>
+            <button className={styles.projects_button} onClick={handlePostProject}>
+              <span>Post Your Projects</span>
             </button>
-            <button className={styles.ideas_button}>
-              <span onClick={handlePostIdea}>Post Your Ideas</span>
+            <button className={styles.ideas_button} onClick={handlePostIdea}>
+              <span>Post Your Ideas</span>
             </button>
           </div>
         </div>
