@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { redirect, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css"; 
+import {  useNavigate } from 'react-router-dom';
 import styles from "../Styles/Home.module.css";
 import Projects_card from '../Components/Projects_card';
 import Ideas_card from '../Components/Ideas_cards';
@@ -11,7 +13,16 @@ function Home() {
   const [projects, setprojects] = useState([]);
   const [ideas, setideas] = useState([]);
   const [blogs, setblogs] = useState([])
+  const [isLoggedIn,setIsLoggedIn] = useState(false)
   
+  const token = localStorage.getItem("token")
+
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, [token]);
+
   const navigate = useNavigate()
   
   const getprojects = async () => {
@@ -47,6 +58,30 @@ function Home() {
     getideas();
   }, []);
 
+   const handlePostProject = () =>{
+      if(isLoggedIn){
+        navigate('/postproject')
+      }else{
+          toast.error("Please Login First")
+          setTimeout(()=>{
+            navigate('/login')
+          },1500)
+      }
+   }
+
+   const handlePostIdea = () =>{
+    if(isLoggedIn){
+      navigate('/postidea')
+    }else{
+        toast.error("Please Login First")
+        setTimeout(()=>{
+          navigate('/login')
+        },1500)
+    }
+ }
+
+
+
   return (
     <>
       <div className={styles.hero_section_wrapper}>
@@ -56,10 +91,10 @@ function Home() {
 
           <div className={styles.buttons_container}>
             <button className={styles.projects_button}>
-              <a href="/projects">Post Your Projects</a>
+              <span onClick={handlePostProject}>Post Your Projects</span>
             </button>
             <button className={styles.ideas_button}>
-              <a href="/ideas">Post Your Ideas</a>
+              <span onClick={handlePostIdea}>Post Your Ideas</span>
             </button>
           </div>
         </div>
@@ -119,7 +154,7 @@ function Home() {
         <div>
         <button className={styles.viewallbtn} onClick={() => navigate('/blog')}>VIEW ALL</button>
         </div>
-
+        <ToastContainer />
       </div>
 
      <Footer/>

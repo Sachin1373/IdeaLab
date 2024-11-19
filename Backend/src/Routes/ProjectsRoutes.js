@@ -33,10 +33,10 @@ router.get('/getprojects', asynchandler(async(req,res)=>{
 
 //Get project by id
 
-router.get('/getproject/:id',asynchandler(async(req,res)=>{
-    const {id} = req.params
+router.get('/getproject/:creatorName',asynchandler(async(req,res)=>{
+    const {creatorName} = req.params
 
-    const project = await Project.findById(id)
+    const project = await Project.find({creatorName})
     
     if(!project){
         return res.status(404).json({ error: "Project not found" })
@@ -67,7 +67,7 @@ router.put('/update/:id',asynchandler(async(req,res)=>{
 router.delete('/delete/:id',asynchandler(async(req,res)=>{
     const {id} = req.params
 
-    const deletedproject = Project.findByIdAndDelete(id)
+    const deletedproject = await Project.findByIdAndDelete(id)
 
     if (!deletedproject) {
         return res.status(404).json({ error: "Project not found" });

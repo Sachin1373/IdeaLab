@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser"
 import connectdb from "./src/Config/Database.js"
 import ProjectRoutes from "./src/Routes/ProjectsRoutes.js"
 import IdeasRouter from "./src/Routes/IdeasRoutes.js"
+import AuthRoute from "./src/Routes/AuthRoute.js"
  
 dotenv.config({
     path:'./.env'
@@ -37,6 +38,7 @@ app.get("/api/v1", (req, res) => {
 });
 app.use('/api/v1/projects',ProjectRoutes)
 app.use('/api/v1/ideas',IdeasRouter)
+app.use('/api/v1/auth',AuthRoute)
 
 // db connection
 connectdb()

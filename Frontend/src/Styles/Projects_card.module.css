@@ -120,6 +120,7 @@
     font-size: 1em;
     font-weight: 600;
     padding: 0 1px;
+    cursor: pointer;
 }
 
 /* Mobile Responsiveness */

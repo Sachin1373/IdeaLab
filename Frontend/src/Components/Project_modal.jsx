@@ -8,15 +8,15 @@ function Project_modal({ project, onClose }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose(); // Close the modal if clicked outside
+        onClose(); 
       }
     };
 
-    // Add event listener for clicks
+    
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      // Cleanup event listener
+      
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
@@ -28,6 +28,7 @@ function Project_modal({ project, onClose }) {
           <h1>{project?.title}</h1>
           <span className={styles.status}>{project?.status}</span>
         </div>
+        <p className={styles.creatorName}>{project?.creatorName}</p>
         <div className={styles.body}>
           <h3>Tech Stack</h3>
           <ul className={styles.techStack}>

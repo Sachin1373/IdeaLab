@@ -1,7 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styles from '../Styles/Projects_card.module.css';
+import Ideas_modal from './Ideas_modal';
 
 function Ideas_card({ Idea }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  }
   return (
     <div className={styles.card_wrapper}>
       <div className={styles.active_close}>
@@ -20,9 +30,12 @@ function Ideas_card({ Idea }) {
       </div>
       <div className={styles.card_bottom}>
         <div className={styles.viewbtn}>
-          <button>View Ideas</button>
+          <button onClick={handleModalOpen}>View Ideas</button>
         </div>
       </div>
+      {isModalOpen && (
+        <Ideas_modal idea={Idea} onClose={handleModalClose} />
+      )}
     </div>
   );
 }

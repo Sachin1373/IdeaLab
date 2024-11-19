@@ -1,0 +1,80 @@
+/* Container for the entire form */
+.container {
+    width: 50%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading style */
+  .heading {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+  
+  /* General form styling */
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Form group for each label and input */
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  /* Label styling */
+  .label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Input and textarea fields */
+  .input,
+  .textarea,
+  .select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .textarea {
+    min-height: 150px;
+    resize: none;
+  }
+  
+  .select {
+    cursor: pointer;
+  }
+  
+  /* Button styling */
+  .submitButton {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Toast container */
+  .Toastify__toast-container {
+    font-size: 0.9rem;
+  }
+  

@@ -1,0 +1,235 @@
+/* Profile Container */
+.profileContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Profile Header */
+.profileHeader {
+    margin-bottom: 30px;
+}
+
+/* Avatar Styling */
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Username */
+.username {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Email Styling */
+.email {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Section Styling */
+.section {
+    margin-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Section Heading */
+.section h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+/* Item List */
+.itemList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Item Styling */
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Last Item */
+.item:last-child {
+    border-bottom: none;
+}
+
+/* Actions Styling */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Edit Button */
+.editButton {
+    background-color: #ffc107;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.editButton:hover {
+    background-color: #e0a800;
+}
+
+/* Delete Button */
+.deleteButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
+/* Logout Button */
+.logout button {
+    cursor: pointer;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: larger;
+    color: white;
+    font-weight: 600;
+    background-color: #007bff;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.logout button:hover {
+    background-color: #c82333; /* Red color on hover */
+}
+
+.logout button:active {
+    transform: scale(0.95); /* Button shrink effect on click */
+    background-color: #a71d2a; /* Darker red for clicked effect */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .profileContainer {
+        padding: 15px;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+
+    .username {
+        font-size: 20px;
+    }
+
+    .email {
+        font-size: 14px;
+    }
+
+    .section h2 {
+        font-size: 18px;
+    }
+
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .editButton, .deleteButton {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .logout button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+
+    .username {
+        font-size: 18px;
+    }
+
+    .email {
+        font-size: 12px;
+    }
+
+    .profileContainer {
+        padding: 10px;
+    }
+
+    .section h2 {
+        font-size: 16px;
+    }
+
+    .item {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    .actions {
+        margin-top: 20px;
+        flex-direction: row;
+        gap: 5px;
+        align-items: stretch;
+    }
+
+    .editButton, .deleteButton {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .logout button {
+        width: 100%;
+        height: auto;
+        padding: 12px;
+        font-size: 16px;
+    }
+}

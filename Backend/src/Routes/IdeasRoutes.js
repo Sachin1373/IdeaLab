@@ -30,10 +30,10 @@ router.get('/getideas', asynchandler(async(req,res)=>{
 
 
 //Get Idea by id
-router.get('/getidea/:id',asynchandler(async(req,res)=>{
-    const {id} = req.params
+router.get('/getidea/:creatorName',asynchandler(async(req,res)=>{
+    const {creatorName} = req.params
 
-    const idea = await Ideas.findById(id)
+    const idea = await Ideas.find({creatorName})
     
     if(!idea){
         return res.status(404).json({ error: "Idea not found" })
@@ -64,7 +64,7 @@ router.put('/update/:id',asynchandler(async(req,res)=>{
 router.delete('/delete/:id',asynchandler(async(req,res)=>{
     const {id} = req.params
 
-    const deleteidea = Ideas.findByIdAndDelete(id)
+    const deleteidea = await Ideas.findByIdAndDelete(id)
 
     if (!deleteidea) {
         return res.status(404).json({ error: "Idea not found" });

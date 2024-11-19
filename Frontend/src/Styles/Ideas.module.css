@@ -37,3 +37,40 @@
     font-size: 1.2rem;
   }
   
+  @media (max-width: 1024px) {
+    .gridContainer {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+      gap: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .gridContainer {
+      grid-template-columns: repeat(1, 1fr); /* 1 column for mobile screens */
+      gap: 10px;
+    }
+  
+    .heading {
+      font-size: 1.8rem;
+    }
+  
+    .loadMoreButton {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ideasContainer {
+      padding: 10px 20px; /* Further reduce padding for very small screens */
+    }
+  
+    .heading {
+      font-size: 1.5rem;
+    }
+  
+    .loadMoreButton {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+  }
