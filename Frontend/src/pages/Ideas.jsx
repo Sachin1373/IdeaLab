@@ -11,7 +11,7 @@ function Ideas() {
 
   const getAllIdeas = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/ideas/getideas");
+      const response = await axios.get("https://idealab-fwjb.onrender.com/api/v1/ideas/getideas");
       setIdeas(response.data);
     } catch (error) {
       console.error("Error while getting the ideas", error.message);
