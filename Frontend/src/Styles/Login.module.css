@@ -78,6 +78,7 @@
   }
   
   .signupLink {
+    cursor: pointer;
     color: #feb47b;
     text-decoration: none;
     font-weight: bold;

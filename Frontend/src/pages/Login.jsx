@@ -70,9 +70,9 @@ const navigate = useNavigate();
         </form>
         <p className={styles.footerText}>
           Not signed up yet?{" "}
-          <a href="/signup" className={styles.signupLink}>
+          <span className={styles.signupLink} onClick={()=>navigate('/signup')}>
             Sign Up
-          </a>
+          </span>
         </p>
       </div>
       <ToastContainer />
