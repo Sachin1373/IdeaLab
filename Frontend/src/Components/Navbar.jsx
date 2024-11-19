@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import logo from "../assets/IdeaLab.png";
-import styles from "../styles/Navbar.module.css";
+import styles from "../Styles/Navbar.module.css"
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi"; 
