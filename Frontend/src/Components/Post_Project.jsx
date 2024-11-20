@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import axios from 'axios';
@@ -6,11 +7,13 @@ import styles from "../Styles/Post_Project.module.css";
 
 function Post_Project() {
     const username = localStorage.getItem("username")
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false); 
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    techstack: '', // We'll split this later into an array
-    status: 'open', // Default value
+    techstack: '', 
+    status: 'open', 
     maxTeamSize: '',
     currentTeamSize: '',
     creatorName: username || '',
@@ -18,7 +21,7 @@ function Post_Project() {
     
   });
 
-
+ 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,12 +37,21 @@ function Post_Project() {
       ...formData,
       techstack: formData.techstack.split(',').map((item) => item.trim()) 
     };
+     
+    setLoading(true);
+
+
     try {
         const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/projects/addproject",projectData)
         toast.success(response?.data?.message || "Something went wrong! Please try again.")
-        
+        setTimeout(()=>{
+          navigate('/')
+        },1200)
     } catch (error) {
         toast.error(error.response?.data?.message || "Something went wrong! Please try again.")
+    }finally {
+      
+      setLoading(false);
     }
     
   };
@@ -159,7 +171,10 @@ function Post_Project() {
                     />
           </div>
 
-        <button type="submit" className={styles.submitButton}>Submit Project</button>
+    
+        <button type="submit" className={styles.submitButton} disabled={loading}>
+                    {loading ? "Posting..." : "Submit Idea"}
+        </button>
       </form>
       <ToastContainer />
     </div>

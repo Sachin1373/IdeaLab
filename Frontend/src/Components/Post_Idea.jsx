@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { toast, ToastContainer } from "react-toastify"; 
+import { useNavigate } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css"; 
 import axios from 'axios';
 import styles from "../Styles/Post_Idea.module.css";
@@ -16,6 +17,9 @@ function Post_Idea() {
   });
 
  
+  const [loading, setLoading] = useState(false); 
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,12 +44,20 @@ function Post_Idea() {
       techstack: formData.techstack.split(',').map(item => item.trim()) 
     };
 
+    setLoading(true);
+
     try {
-      // Send POST request to the backend API
+     
       const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/ideas/addidea", ideaData);
       toast.success(response?.data?.message || "Idea posted successfully!");
+      setTimeout(()=>{
+        navigate('/')
+      },1200)
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
+    }finally {
+      
+      setLoading(false);
     }
   };
 
@@ -137,7 +149,10 @@ function Post_Idea() {
           />
         </div>
 
-        <button type="submit" className={styles.submitButton}>Submit Idea</button>
+        <button type="submit" className={styles.submitButton} disabled={loading}>
+                    {loading ? "Posting..." : "Submit Idea"}
+        </button>
+
       </form>
       <ToastContainer />
     </div>
