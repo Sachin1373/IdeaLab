@@ -21,7 +21,9 @@ const PORT = process.env.PORT || 5000
 //middlewares
 app.use(cors({
     origin: ['https://idea-lab-chi.vercel.app/'], 
-  credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }))
 app.use(bodyParser.json())
 app.use(helemt())
