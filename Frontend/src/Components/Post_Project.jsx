@@ -35,7 +35,7 @@ function Post_Project() {
       techstack: formData.techstack.split(',').map((item) => item.trim()) 
     };
     try {
-        const response = await axios.post("http://localhost:8000/api/v1/projects/addproject",projectData)
+        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/projects/addproject",projectData)
         toast.success(response?.data?.message || "Something went wrong! Please try again.")
         
     } catch (error) {

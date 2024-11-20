@@ -22,7 +22,7 @@ const navigate = useNavigate();
     const handlesubmit = async(e) =>{
       e.preventDefault();
       try {
-        const response = await axios.post("http://localhost:8000/api/v1/auth/login",logindata)
+        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/login",logindata)
         const username = response.data.username
         const token = response.data.token
         const email = response.data.email

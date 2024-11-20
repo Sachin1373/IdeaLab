@@ -19,7 +19,7 @@ function Profile() {
 
   const getUserProjects = async() =>{
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/projects/getproject/${username}`)
+      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/projects/getproject/${username}`)
        setuserprojects(response.data)
     } catch (error) {
       console.log("error while fetching user project",error.message);
@@ -29,7 +29,7 @@ function Profile() {
 
   const getUserIdeas = async() =>{
     try {
-      const response = await axios.get(`http://localhost:8000/api/v1/ideas/getidea/${username}`)
+      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/ideas/getidea/${username}`)
       setuserideas(response.data)
     } catch (error) {
       console.log("error while fetching user project",error.message);
@@ -70,7 +70,7 @@ function Profile() {
     console.log("id : ",project._id);
     
      try {
-      const response = await axios.delete(`http://localhost:8000/api/v1/projects/delete/${project._id}`)
+      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/projects/delete/${project._id}`)
       console.log(response);
       setuserprojects((prevProjects) =>
         prevProjects.filter((p) => p._id !== project._id)
@@ -86,7 +86,7 @@ function Profile() {
 
     
      try {
-      const response = await axios.delete(`http://localhost:8000/api/v1/ideas/delete/${idea._id}`)
+      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/ideas/delete/${idea._id}`)
       console.log(response);
       setuserideas((previdea) =>
         previdea.filter((I) => I._id !== idea._id)

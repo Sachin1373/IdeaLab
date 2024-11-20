@@ -42,7 +42,7 @@ function Post_Idea() {
 
     try {
       // Send POST request to the backend API
-      const response = await axios.post("http://localhost:8000/api/v1/ideas/addidea", ideaData);
+      const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/ideas/addidea", ideaData);
       toast.success(response?.data?.message || "Idea posted successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
