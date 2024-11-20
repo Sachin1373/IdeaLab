@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from "../Styles/Project.module.css";
 import Projects_card from '../Components/Projects_card';
+import Spinner from '../Components/Spinner';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -81,7 +82,7 @@ function Projects() {
 
       <div className={styles.project_wrapper}>
         {isLoading ? (
-          <p>Loading projects...</p>
+          <Spinner/>
         ) : error ? (
           <p className={styles.error}>{error}</p>
         ) : filteredProjects.length === 0 ? (

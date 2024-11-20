@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Spinner from '../Components/Spinner';
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import {  useNavigate } from 'react-router-dom';
@@ -109,7 +110,7 @@ function Home() {
             <Projects_card key={project._id} project={project} /> 
           ))
         ) : (
-          <div>No projects available</div> 
+          <Spinner/> 
         )}
        </div>
 
@@ -128,7 +129,7 @@ function Home() {
             <Ideas_card key={idea._id} Idea={idea} /> 
           ))
         ) : (
-          <div>No Ideas available</div> 
+          <Spinner/>
         )}
        </div>
 
@@ -147,7 +148,7 @@ function Home() {
             <Blogs_card key={blog._id} blog={blog} /> 
           ))
         ) : (
-          <div>No Blogs available</div> 
+          <Spinner/>
         )}
        </div>
 

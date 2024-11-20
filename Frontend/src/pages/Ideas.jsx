@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Spinner from '../Components/Spinner';
 import styles from "../Styles/Ideas.module.css";
 import Ideas_card from '../Components/Ideas_cards';
 
@@ -34,7 +35,7 @@ function Ideas() {
       <h1 className={styles.heading}>All Ideas</h1>
 
       {isLoading ? (
-        <p>Loading ideas...</p>
+       <Spinner/>
       ) : error ? (
         <p className={styles.error}>{error}</p>
       ) : (
