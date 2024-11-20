@@ -7,7 +7,7 @@ const router = express.Router()
 // add project
 
 router.post('/addproject', asynchandler(async(req,res)=>{
-    const {title,description,techstack,status,maxTeamSize,currentTeamSize,creatorName,createdAt} = req.body
+    const {title,description,techstack,status,maxTeamSize,currentTeamSize,creatorName,email,createdAt} = req.body
     
     const project = new Project({
         title,
@@ -17,6 +17,7 @@ router.post('/addproject', asynchandler(async(req,res)=>{
         maxTeamSize,
         currentTeamSize,
         creatorName,
+        email,
         createdAt
     })
 

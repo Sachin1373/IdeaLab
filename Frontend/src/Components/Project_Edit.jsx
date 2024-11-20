@@ -49,7 +49,7 @@ function Project_Edit() {
     };
 
     try {
-      const response = await axios.put(`https://idealab-fwjb.onrender.com/api/v1/projects/update/${project._id}`,projectData );
+      const response = await axios.put(`http://localhost:8000/api/v1/projects/update/${project._id}`,projectData );
       toast.success(response?.data?.message || "Project updated successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");

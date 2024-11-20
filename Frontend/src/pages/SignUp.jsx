@@ -23,7 +23,7 @@ function SignUp() {
   const handlesubmit = async(e) =>{
     e.preventDefault();
     try {
-      const response = await axios.post("https://idealab-fwjb.onrender.com/api/v1/auth/signup",Formdata) 
+      const response = await axios.post("http://localhost:8000/api/v1/auth/signup",Formdata) 
       toast.success("User created successfully! Please log in.");
       setTimeout(()=>{
         navigate("/login");

@@ -21,6 +21,18 @@ function Project_modal({ project, onClose }) {
     };
   }, [onClose]);
 
+
+  const handleJoin = () => {
+    const subject = `Request to Join: ${project?.title}`;
+    const body = `Hello,\n\nI am interested in joining your project "${project?.title}". Please let me know how I can contribute.\n\nThank you!`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      project?.email
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    
+    window.open(gmailLink, "_blank");
+  };
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal} ref={modalRef}>
@@ -29,6 +41,7 @@ function Project_modal({ project, onClose }) {
           <span className={styles.status}>{project?.status}</span>
         </div>
         <p className={styles.creatorName}>{project?.creatorName}</p>
+  
         <div className={styles.body}>
           <h3>Tech Stack</h3>
           <ul className={styles.techStack}>
@@ -43,7 +56,7 @@ function Project_modal({ project, onClose }) {
           <div className={styles.team}>
             <FaUserGroup /> {project?.currentTeamSize}/{project?.maxTeamSize}
           </div>
-          <button className={styles.joinBtn}>Join</button>
+          <button className={styles.joinBtn} onClick={handleJoin}>Join</button>
         </div>
       </div>
     </div>

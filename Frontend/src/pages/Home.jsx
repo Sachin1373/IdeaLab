@@ -27,7 +27,7 @@ function Home() {
   
   const getprojects = async () => {
     try {
-      const response = await axios.get("https://idealab-fwjb.onrender.com/api/v1/projects/getprojects");
+      const response = await axios.get("http://localhost:8000/api/v1/projects/getprojects");
       setprojects(response.data.slice(0,3)); 
     } catch (error) {
       console.log("Error while getting the projects", error.message);
@@ -36,7 +36,7 @@ function Home() {
 
   const getideas = async () => {
     try {
-      const response = await axios.get("https://idealab-fwjb.onrender.com/api/v1/ideas/getideas");
+      const response = await axios.get("http://localhost:8000/api/v1/ideas/getideas");
       setideas(response.data.slice(0,3)); 
     } catch (error) {
       console.log("Error while getting the Ideas", error.message);

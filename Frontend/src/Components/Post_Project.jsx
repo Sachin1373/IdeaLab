@@ -13,7 +13,9 @@ function Post_Project() {
     status: 'open', // Default value
     maxTeamSize: '',
     currentTeamSize: '',
-    creatorName: username || '', // Placeholder for the username (you could fetch this if logged in)
+    creatorName: username || '',
+    email: '',
+    
   });
 
 
@@ -33,7 +35,7 @@ function Post_Project() {
       techstack: formData.techstack.split(',').map((item) => item.trim()) 
     };
     try {
-        const response = await axios.post("https://idealab-fwjb.onrender.com/api/v1/projects/addproject",projectData)
+        const response = await axios.post("http://localhost:8000/api/v1/projects/addproject",projectData)
         toast.success(response?.data?.message || "Something went wrong! Please try again.")
         
     } catch (error) {
@@ -142,6 +144,20 @@ function Post_Project() {
             required
           />
         </div>
+
+        <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.label}>Email</label>
+                   <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={styles.input}
+                        placeholder="Enter your email"
+                        required
+                    />
+          </div>
 
         <button type="submit" className={styles.submitButton}>Submit Project</button>
       </form>

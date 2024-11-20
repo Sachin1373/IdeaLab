@@ -60,7 +60,7 @@ function Idea_Edit() {
 
     try {
       // Send POST request to the backend API
-      const response = await axios.put(`https://idealab-fwjb.onrender.com/api/v1/ideas/update/${idea._id}`, ideaData);
+      const response = await axios.put(`http://localhost:8000/api/v1/ideas/update/${idea._id}`, ideaData);
       toast.success(response?.data?.message || "Idea posted successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");

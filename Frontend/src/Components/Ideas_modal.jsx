@@ -18,6 +18,17 @@ function Ideas_modal({ idea, onClose }) {
     };
   }, [onClose]);
 
+  const handleJoin = () => {
+    const subject = `Request to Join: ${idea?.title}`;
+    const body = `Hello,\n\nI am interested in Idea "${idea?.title}" and want to discuss  with you. Please let me know how I can contribute.\n\nThank you!`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      idea?.email
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    
+    window.open(gmailLink, "_blank");
+  };
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal} ref={modalRef}>
@@ -26,6 +37,7 @@ function Ideas_modal({ idea, onClose }) {
           <span className={styles.status}>{idea?.status}</span>
         </div>
         <p className={styles.creatorName}>{idea?.creatorName}</p>
+        
         <div className={styles.body}>
           <p>{idea?.description}</p>
           <div className={styles.skills}>
@@ -35,7 +47,7 @@ function Ideas_modal({ idea, onClose }) {
           </div>
         </div>
         <div className={styles.footer}>
-          <button className={styles.discussBtn}>Discuss</button>
+          <button className={styles.discussBtn} onClick={handleJoin}>Discuss</button>
         </div>
       </div>
     </div>

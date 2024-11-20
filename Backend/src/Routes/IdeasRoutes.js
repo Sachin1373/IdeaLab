@@ -6,7 +6,7 @@ const router = express.Router()
 
 // POST Ideas
 router.post('/addidea', asynchandler(async(req,res)=>{
-    const {title,description,techstack,status,creatorName,createdAt} = req.body
+    const {title,description,techstack,status,creatorName,email,createdAt} = req.body
     
     const idea = new Ideas({
         title,
@@ -14,6 +14,7 @@ router.post('/addidea', asynchandler(async(req,res)=>{
         techstack,
         status,
         creatorName,
+        email,
         createdAt
     })
 

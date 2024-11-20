@@ -11,7 +11,8 @@ function Post_Idea() {
     description: '',
     techstack: '', // We'll split this later into an array
     status: 'concept', // Default value
-    creatorName: username, // Username to be filled
+    creatorName: username, 
+    email: '',
   });
 
  
@@ -41,7 +42,7 @@ function Post_Idea() {
 
     try {
       // Send POST request to the backend API
-      const response = await axios.post("https://idealab-fwjb.onrender.com/api/v1/ideas/addidea", ideaData);
+      const response = await axios.post("http://localhost:8000/api/v1/ideas/addidea", ideaData);
       toast.success(response?.data?.message || "Idea posted successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
@@ -117,6 +118,21 @@ function Post_Idea() {
             onChange={handleChange}
             className={styles.input}
             placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        
+        <div className={styles.formGroup}>
+          <label htmlFor="email" className={styles.label}>Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={styles.input}
+            placeholder="Enter your email"
             required
           />
         </div>

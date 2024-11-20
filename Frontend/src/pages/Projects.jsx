@@ -13,7 +13,7 @@ function Projects() {
 
   const getAllProjects = async () => {
     try {
-      const response = await axios.get("https://idealab-fwjb.onrender.com/api/v1/projects/getprojects");
+      const response = await axios.get("http://localhost:8000/api/v1/projects/getprojects");
       setProjects(response.data);
       setFilteredProjects(response.data); // Set the filtered list initially to all projects
     } catch (error) {
