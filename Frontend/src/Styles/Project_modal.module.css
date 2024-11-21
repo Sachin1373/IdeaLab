@@ -97,18 +97,24 @@
   }
   
   .joinBtn {
-    background-color: #28a745;
-    color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
+    background-color: #4caf50; /* Default green color */
+    color: white;
     cursor: pointer;
+    font-size: 16px;
     transition: background-color 0.3s ease;
   }
   
   .joinBtn:hover {
-    background-color: #218838;
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
+  
+  /* Disabled button styles */
+  .disabled {
+    background-color: #a9a9a9; /* Gray color for disabled button */
+    cursor: not-allowed; /* Indicate the button is not clickable */
   }
   
   /* Fade-in Animation */

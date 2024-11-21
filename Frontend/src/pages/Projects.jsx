@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Debounce from '../Utils/Debounce';
 import styles from "../Styles/Project.module.css";
 import Projects_card from '../Components/Projects_card';
 import Spinner from '../Components/Spinner';
@@ -26,7 +27,9 @@ function Projects() {
   };
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    
+      setSearchTerm(event.target.value);
+   
   };
 
   const handleFilterChange = (event) => {
@@ -37,15 +40,15 @@ function Projects() {
     getAllProjects();
   }, []);
 
-  // Filter projects based on search term and filter status
+  const debouncedsearch = Debounce(searchTerm,1000)
   useEffect(() => {
     let filtered = projects;
 
-    if (searchTerm) {
+    if (debouncedsearch) {
       filtered = filtered.filter((project) =>
-        project?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project?.title?.toLowerCase().includes(debouncedsearch.toLowerCase()) ||
         project?.techstack?.some((skill) =>
-          skill.toLowerCase().includes(searchTerm.toLowerCase())
+          skill.toLowerCase().includes(debouncedsearch.toLowerCase())
         )
       );
     }
@@ -55,7 +58,7 @@ function Projects() {
     }
 
     setFilteredProjects(filtered);
-  }, [searchTerm, filterStatus, projects]);
+  }, [debouncedsearch, filterStatus, projects]);
 
   return (
     <>

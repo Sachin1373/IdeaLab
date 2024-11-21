@@ -14,6 +14,20 @@
     gap: 20px;
     margin-bottom: 40px;
   }
+
+  .spinnerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Make the spinnerWrapper take the full height of its parent */
+    background-color: rgb(172, 202, 251); 
+    min-height: 300px; /* Optional: Ensures a minimum height for the wrapper */
+  }
+  
+  .spinnerWrapper > div {
+    width: 50px; /* Adjust width if needed */
+    height: 50px; /* Adjust height if needed */
+  }
   
   .loadMoreButton {
     display: block;

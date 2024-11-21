@@ -35,7 +35,9 @@ function Ideas() {
       <h1 className={styles.heading}>All Ideas</h1>
 
       {isLoading ? (
-       <Spinner/>
+        <div className={styles.spinnerWrapper}>
+           <Spinner/>
+        </div>
       ) : error ? (
         <p className={styles.error}>{error}</p>
       ) : (

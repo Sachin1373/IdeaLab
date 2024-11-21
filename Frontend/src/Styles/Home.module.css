@@ -11,6 +11,15 @@
   text-align: center;
   padding: 80px 20px;
 }
+.spinnerWrapper {
+  display: flex;
+  margin-left: 45%;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  background-color: rgb(172, 202, 251); 
+}
+
 
 .hero_content {
   max-width: 1200px;

@@ -110,7 +110,9 @@ function Home() {
             <Projects_card key={project._id} project={project} /> 
           ))
         ) : (
-          <Spinner/> 
+          <div className={styles.spinnerWrapper}>
+              <Spinner/>
+          </div>
         )}
        </div>
 
@@ -129,7 +131,9 @@ function Home() {
             <Ideas_card key={idea._id} Idea={idea} /> 
           ))
         ) : (
+          <div className={styles.spinnerWrapper}>
           <Spinner/>
+         </div>
         )}
        </div>
 

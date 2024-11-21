@@ -1,9 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaUserGroup } from "react-icons/fa6";
 import styles from "../Styles/Project_modal.module.css";
 
 function Project_modal({ project, onClose }) {
   const modalRef = useRef();
+  const [joindesable,setjoindesable] = useState(false)
+
+  useEffect(() => {
+    if (project?.status === "closed") {
+      setjoindesable(true);
+    } else {
+      setjoindesable(false);
+    }
+  }, [project]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -56,7 +65,13 @@ function Project_modal({ project, onClose }) {
           <div className={styles.team}>
             <FaUserGroup /> {project?.currentTeamSize}/{project?.maxTeamSize}
           </div>
-          <button className={styles.joinBtn} onClick={handleJoin}>Join</button>
+          <button
+            className={`${styles.joinBtn} ${joindesable ? styles.disabled : ''}`}
+            onClick={handleJoin}
+            disabled={joindesable}
+          >
+            Join
+          </button>
         </div>
       </div>
     </div>
