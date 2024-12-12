@@ -36,7 +36,7 @@ router.post('/login',asynchandler(async(req,res)=>{
     if(!user){
        return  res.status(400).json({message:"Invalid credentials"})
     }
-    const isMatch = await bcrypt.compare(password,user.password)
+    const isMatch =  bcrypt.compare(password,user.password)
     if(!isMatch){
         return  res.status(400).json({message:"Invalid credentials"})
     }
@@ -48,8 +48,3 @@ router.post('/login',asynchandler(async(req,res)=>{
 
 //get user details
 
-router.get('/getuser',asynchandler(async(req,res)=>{
-
-}))
-
-export default router;
