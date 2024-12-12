@@ -46,5 +46,5 @@ router.post('/login',asynchandler(async(req,res)=>{
 
 }))
 
-//get user details
+export default router;
 
