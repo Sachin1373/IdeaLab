@@ -1,12 +1,13 @@
 import express from "express"
 import asynchandler from "../Utils/Asynchandler.js"
 import Project from "../Models/ProjectSchema.js"
+import verify from "../Middlewares/Verify.js"
 
 const router = express.Router()
 
 // add project
 
-router.post('/addproject', asynchandler(async(req,res)=>{
+router.post('/addproject', verify, asynchandler(async(req,res)=>{
     const {title,description,techstack,status,maxTeamSize,currentTeamSize,creatorName,email,createdAt} = req.body
     
     const project = new Project({
@@ -27,14 +28,14 @@ router.post('/addproject', asynchandler(async(req,res)=>{
 
 // Get all projects
 
-router.get('/getprojects', asynchandler(async(req,res)=>{
+router.get('/getprojects', verify,  asynchandler(async(req,res)=>{
     const projects = await Project.find()
     res.status(200).json(projects)
 }))
 
 //Get project by id
 
-router.get('/getproject/:creatorName',asynchandler(async(req,res)=>{
+router.get('/getproject/:creatorName', verify, asynchandler(async(req,res)=>{
     const {creatorName} = req.params
 
     const project = await Project.find({creatorName})
@@ -49,7 +50,7 @@ router.get('/getproject/:creatorName',asynchandler(async(req,res)=>{
 
 //Update Project 
 
-router.put('/update/:id',asynchandler(async(req,res)=>{
+router.put('/update/:id', verify, asynchandler(async(req,res)=>{
     const {id} = req.params
     const updates = req.body
     const updateproject = await Project.findByIdAndUpdate(id,updates,{
@@ -65,7 +66,7 @@ router.put('/update/:id',asynchandler(async(req,res)=>{
 
 // Delete project 
 
-router.delete('/delete/:id',asynchandler(async(req,res)=>{
+router.delete('/delete/:id', verify, asynchandler(async(req,res)=>{
     const {id} = req.params
 
     const deletedproject = await Project.findByIdAndDelete(id)

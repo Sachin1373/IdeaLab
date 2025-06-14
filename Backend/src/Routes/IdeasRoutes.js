@@ -1,11 +1,12 @@
 import express from "express"
 import asynchandler from "../Utils/Asynchandler.js"
 import Ideas from "../Models/IdeasSchema.js"
+import verify from "../Middlewares/Verify.js"
 
 const router = express.Router()
 
 // POST Ideas
-router.post('/addidea', asynchandler(async(req,res)=>{
+router.post('/addidea', verify, asynchandler(async(req,res)=>{
     const {title,description,techstack,status,creatorName,email,createdAt} = req.body
     
     const idea = new Ideas({
@@ -24,14 +25,14 @@ router.post('/addidea', asynchandler(async(req,res)=>{
 
 
 // Get all projects
-router.get('/getideas', asynchandler(async(req,res)=>{
+router.get('/getideas', verify, asynchandler(async(req,res)=>{
     const ideas = await Ideas.find()
     res.status(200).json(ideas)
 }))
 
 
 //Get Idea by id
-router.get('/getidea/:creatorName',asynchandler(async(req,res)=>{
+router.get('/getidea/:creatorName', verify, asynchandler(async(req,res)=>{
     const {creatorName} = req.params
 
     const idea = await Ideas.find({creatorName})
@@ -46,7 +47,7 @@ router.get('/getidea/:creatorName',asynchandler(async(req,res)=>{
 
 
 //Update Project 
-router.put('/update/:id',asynchandler(async(req,res)=>{
+router.put('/update/:id', verify, asynchandler(async(req,res)=>{
     const {id} = req.params
     const updates = req.body
     const updateidea = await Ideas.findByIdAndUpdate(id,updates,{
@@ -62,7 +63,7 @@ router.put('/update/:id',asynchandler(async(req,res)=>{
 
 
 // Delete project 
-router.delete('/delete/:id',asynchandler(async(req,res)=>{
+router.delete('/delete/:id',verify, asynchandler(async(req,res)=>{
     const {id} = req.params
 
     const deleteidea = await Ideas.findByIdAndDelete(id)
