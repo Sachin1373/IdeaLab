@@ -60,7 +60,13 @@ function Idea_Edit() {
 
     try {
       // Send POST request to the backend API
-      const response = await axios.put(`https://idealab-1-backend.onrender.com/api/v1/ideas/update/${idea._id}`, ideaData);
+      const response = await axios.put(`https://idealab-1-backend.onrender.com/api/v1/ideas/update/${idea._id}`, ideaData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       toast.success(response?.data?.message || "Idea posted successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");

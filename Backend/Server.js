@@ -30,7 +30,7 @@ app.use(bodyParser.json())
 app.use(helemt())
 app.use(compression())
 app.use(cookieParser())
-app.use(morgan())
+// app.use(morgan())
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: "Something went wrong!" });

@@ -29,7 +29,6 @@ function SignUp() {
         navigate("/login");
       },1500)
     } catch (error) {
-      console.log("error while posting the formdata signup",error.message)
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
     }
   }

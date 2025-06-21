@@ -28,7 +28,7 @@ router.post('/addproject', verify, asynchandler(async(req,res)=>{
 
 // Get all projects
 
-router.get('/getprojects', verify,  asynchandler(async(req,res)=>{
+router.get('/getprojects', asynchandler(async(req,res)=>{
     const projects = await Project.find()
     res.status(200).json(projects)
 }))

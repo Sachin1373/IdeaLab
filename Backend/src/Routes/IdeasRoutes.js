@@ -24,8 +24,8 @@ router.post('/addidea', verify, asynchandler(async(req,res)=>{
 }))
 
 
-// Get all projects
-router.get('/getideas', verify, asynchandler(async(req,res)=>{
+// Get all Ideas
+router.get('/getideas', asynchandler(async(req,res)=>{
     const ideas = await Ideas.find()
     res.status(200).json(ideas)
 }))
@@ -45,8 +45,7 @@ router.get('/getidea/:creatorName', verify, asynchandler(async(req,res)=>{
     }
 }))
 
-
-//Update Project 
+// Update Idea
 router.put('/update/:id', verify, asynchandler(async(req,res)=>{
     const {id} = req.params
     const updates = req.body
@@ -61,8 +60,7 @@ router.put('/update/:id', verify, asynchandler(async(req,res)=>{
       }
 }))
 
-
-// Delete project 
+// Delete Idea
 router.delete('/delete/:id',verify, asynchandler(async(req,res)=>{
     const {id} = req.params
 

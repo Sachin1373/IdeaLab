@@ -27,7 +27,7 @@ function Ideas() {
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleIdeas((prev) => prev + 6); // Load 6 more ideas when clicked
+    setVisibleIdeas((prev) => prev + 6);
   };
 
   return (

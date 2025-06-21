@@ -7,6 +7,7 @@ import styles from "../Styles/Post_Idea.module.css";
 
 function Post_Idea() {
     const username = localStorage.getItem("username");
+    const token = localStorage.getItem("token");
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -48,7 +49,14 @@ function Post_Idea() {
 
     try {
      
-      const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/ideas/addidea", ideaData);
+      const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/ideas/addidea", 
+        ideaData,
+         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success(response?.data?.message || "Idea posted successfully!");
       setTimeout(()=>{
         navigate('/')

@@ -85,7 +85,7 @@ function Projects() {
 
       <div className={styles.project_wrapper}>
         {isLoading ? (
-            <p className={styles.loadingText}>Loading projects, please wait...</p>
+          <Spinner />
         ) : error ? (
           <p className={styles.error}>{error}</p>
         ) : filteredProjects.length === 0 ? (

@@ -7,6 +7,7 @@ import styles from "../Styles/Post_Project.module.css";
 
 function Post_Project() {
     const username = localStorage.getItem("username")
+    const token = localStorage.getItem("token")
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false); 
   const [formData, setFormData] = useState({
@@ -42,7 +43,14 @@ function Post_Project() {
 
 
     try {
-        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/projects/addproject",projectData)
+        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/projects/addproject",
+          projectData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         toast.success(response?.data?.message || "Something went wrong! Please try again.")
         setTimeout(()=>{
           navigate('/')

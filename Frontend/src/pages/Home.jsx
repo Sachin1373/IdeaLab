@@ -31,7 +31,7 @@ function Home() {
       const response = await axios.get("https://idealab-1-backend.onrender.com/api/v1/projects/getprojects");
       setprojects(response.data.slice(0,3)); 
     } catch (error) {
-      console.log("Error while getting the projects", error.message);
+      toast.error("Error while getting the Projects");
     }
   };
 
@@ -40,7 +40,7 @@ function Home() {
       const response = await axios.get("https://idealab-1-backend.onrender.com/api/v1/ideas/getideas");
       setideas(response.data.slice(0,3)); 
     } catch (error) {
-      console.log("Error while getting the Ideas", error.message);
+      toast.error("Error while getting the Ideas");
     }
   };
 
@@ -49,7 +49,7 @@ function Home() {
       const response = await axios.get("https://dev.to/api/articles?tag=projects");
       setblogs(response.data.slice(5,8)); 
     } catch (error) {
-      console.log("Error while getting the Blogs", error.message);
+      toast.error("Error while getting the Blogs");
     }
   }
 
@@ -103,19 +103,17 @@ function Home() {
 
       <div className={styles.demo_projects_wrapper}>
           <h1>Projects</h1>
-       <div className={styles.cards}>
-
        {projects.length > 0 ? (
-          projects.map((project) => (
-            <Projects_card key={project._id} project={project} /> 
-          ))
+          <div className={styles.cards}>
+            {projects.map((project) => (
+              <Projects_card key={project._id} project={project} />
+            ))}
+          </div>
         ) : (
-          <div className={styles.spinnerWrapper}>
-              <Spinner/>
+          <div>
+            <Spinner />
           </div>
         )}
-       </div>
-
         <div>
         <button className={styles.viewallbtn} onClick={()=> navigate('/projects')}>VIEW ALL</button>
         </div>
@@ -131,7 +129,7 @@ function Home() {
             <Ideas_card key={idea._id} Idea={idea} /> 
           ))
         ) : (
-          <div className={styles.spinnerWrapper}>
+          <div>
           <Spinner/>
          </div>
         )}

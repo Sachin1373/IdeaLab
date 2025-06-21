@@ -19,21 +19,31 @@ function Profile() {
 
   const getUserProjects = async() =>{
     try {
-      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/projects/getproject/${username}`)
+      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/projects/getproject/${username}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
        setuserprojects(response.data)
     } catch (error) {
-      console.log("error while fetching user project",error.message);
-      
+      toast.error("Error while fetching user projects");
     }
   }
 
   const getUserIdeas = async() =>{
     try {
-      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/ideas/getidea/${username}`)
+      const response = await axios.get(`https://idealab-1-backend.onrender.com/api/v1/ideas/getidea/${username}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       setuserideas(response.data)
     } catch (error) {
-      console.log("error while fetching user project",error.message);
-      
+      toast.error("Error while fetching user ideas");
     }
   }
 
@@ -67,11 +77,15 @@ function Profile() {
   }
 
   const handleprojectDelete = async(project) =>{
-    console.log("id : ",project._id);
-    
+
      try {
-      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/projects/delete/${project._id}`)
-      console.log(response);
+      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/projects/delete/${project._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       setuserprojects((prevProjects) =>
         prevProjects.filter((p) => p._id !== project._id)
       );
@@ -86,8 +100,13 @@ function Profile() {
 
     
      try {
-      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/ideas/delete/${idea._id}`)
-      console.log(response);
+      const response = await axios.delete(`https://idealab-1-backend.onrender.com/api/v1/ideas/delete/${idea._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       setuserideas((previdea) =>
         previdea.filter((I) => I._id !== idea._id)
       );

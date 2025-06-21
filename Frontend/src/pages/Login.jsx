@@ -34,7 +34,6 @@ const navigate = useNavigate();
           navigate("/");
         },1500)
       } catch (error) {
-        console.log("error while Login",error.message)
         toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
       }
     }

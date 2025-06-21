@@ -49,7 +49,13 @@ function Project_Edit() {
     };
 
     try {
-      const response = await axios.put(`https://idealab-1-backend.onrender.com/api/v1/projects/update/${project._id}`,projectData );
+      const response = await axios.put(`https://idealab-1-backend.onrender.com/api/v1/projects/update/${project._id}`,projectData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+       );
       toast.success(response?.data?.message || "Project updated successfully!");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
