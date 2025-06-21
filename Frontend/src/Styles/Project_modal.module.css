@@ -132,7 +132,6 @@
     .modal {
         width: 95%; 
         padding: 15px; 
-        height: 80%;
         overflow-y: scroll;
     }
 
