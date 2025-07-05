@@ -124,15 +124,15 @@ function Home() {
           <h1>Ideas</h1>
        <div className={styles.cards}>
 
-       {ideas.length > 0 ? (
-          ideas.map((idea) => (
-            <Ideas_card key={idea._id} Idea={idea} /> 
-          ))
-        ) : (
-          <div>
-          <Spinner/>
-         </div>
-        )}
+          {ideas.length > 0 ? (
+              ideas.map((idea) => (
+                <Ideas_card key={idea._id} Idea={idea} /> 
+              ))
+            ) : (
+              <div>
+              <Spinner/>
+            </div>
+            )}
        </div>
 
         <div>

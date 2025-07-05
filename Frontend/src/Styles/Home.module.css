@@ -100,8 +100,8 @@
 
 .cards {
   display: flex;
-  padding-left: 30px;
-  gap: 20px;
+  /* border: 2px solid red; */
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -198,7 +198,4 @@
     margin-bottom: 20px; 
   }
 
-  .spinnerWrapper {
-   
-}
 }
