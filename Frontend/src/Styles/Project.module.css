@@ -32,6 +32,7 @@
     row-gap: 30px;
     height: auto;
     flex-grow: 1; 
+    gap: 2rem;
   }
 
   .loadingText{
