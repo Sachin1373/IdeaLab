@@ -115,7 +115,6 @@ function SignUp() {
         </div>
         
         {/* Google Signup */}
-        <div className={styles.googleSignupContainer}>
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={handleGoogleError}
@@ -126,7 +125,6 @@ function SignUp() {
             shape="rectangular"
             width="100%"
           />
-        </div>
         
         <p className={styles.footerText}>
           Already signed up?{" "}

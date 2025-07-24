@@ -95,15 +95,6 @@
     font-size: 0.9rem;
   }
 
-  .googleSignupContainer {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .googleSignupContainer > div {
-    width: 100% !important;
-  }
   
   .footerText {
     display: flex;

@@ -95,15 +95,7 @@
     font-size: 0.9rem;
   }
 
-  .googleLoginContainer {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .googleLoginContainer > div {
-    width: 100% !important;
-  }
+ 
   
   .footerText {
     margin-top: 20px;

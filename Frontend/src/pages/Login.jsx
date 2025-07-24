@@ -101,7 +101,7 @@ function Login() {
         </div>
         
         {/* Google Login */}
-        <div className={styles.googleLoginContainer}>
+        
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onError={handleGoogleError}
@@ -112,7 +112,7 @@ function Login() {
             shape="rectangular"
             width="100%"
           />
-        </div>
+        
         
         <p className={styles.footerText}>
           Not signed up yet?{" "}
