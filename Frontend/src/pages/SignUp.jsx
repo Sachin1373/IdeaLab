@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify"; 
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 import styles from "../Styles/SignUp.module.css";
 
 function SignUp() {
@@ -32,6 +34,34 @@ function SignUp() {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
     }
   }
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      console.log('Google Signup Success:', decoded);
+      
+      const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/google-login", {
+        tokenId: credentialResponse.credential
+      });
+      
+      const { token, username, email } = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
+      
+      toast.success("Google signup successful!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (error) {
+      console.error('Google signup error:', error);
+      toast.error(error.response?.data?.message || "Google signup failed. Please try again.");
+    }
+  };
+
+  const handleGoogleError = () => {
+    toast.error("Google signup failed. Please try again.");
+  };
 
   return (
     <div className={styles.signupContainer}>
@@ -82,6 +112,26 @@ function SignUp() {
             Sign Up
           </button>
         </form>
+        
+        {/* Divider */}
+        <div className={styles.divider}>
+          <span>OR</span>
+        </div>
+        
+        {/* Google Signup */}
+        <div className={styles.googleSignupContainer}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            useOneTap
+            theme="outline"
+            size="large"
+            text="signup_with"
+            shape="rectangular"
+            width="100%"
+          />
+        </div>
+        
         <p className={styles.footerText}>
           Already signed up?{" "}
           <p className={styles.loginLink} onClick={()=>navigate('/login')}>

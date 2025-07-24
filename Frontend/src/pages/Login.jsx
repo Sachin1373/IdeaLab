@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify"; 
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 import styles from "../Styles/Login.module.css";
 
 function Login() {
@@ -22,7 +24,7 @@ const navigate = useNavigate();
     const handlesubmit = async(e) =>{
       e.preventDefault();
       try {
-        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/login",logindata)
+        const response = await axios.post("https://localhost/api/v1/auth/login",logindata)
         const username = response.data.username
         const token = response.data.token
         const email = response.data.email
@@ -37,6 +39,34 @@ const navigate = useNavigate();
         toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
       }
     }
+
+    const handleGoogleSuccess = async (credentialResponse) => {
+      try {
+        const decoded = jwtDecode(credentialResponse.credential);
+        console.log('Google Login Success:', decoded);
+        
+        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/google-login", {
+          tokenId: credentialResponse.credential
+        });
+        
+        const { token, username, email } = response.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", username);
+        localStorage.setItem("email", email);
+        
+        toast.success("Google login successful!");
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+      } catch (error) {
+        console.error('Google login error:', error);
+        toast.error(error.response?.data?.message || "Google login failed. Please try again.");
+      }
+    };
+
+    const handleGoogleError = () => {
+      toast.error("Google login failed. Please try again.");
+    };
 
   return (
     <div className={styles.loginContainer}>
@@ -67,6 +97,26 @@ const navigate = useNavigate();
             Login
           </button>
         </form>
+        
+        {/* Divider */}
+        <div className={styles.divider}>
+          <span>OR</span>
+        </div>
+        
+        {/* Google Login */}
+        <div className={styles.googleLoginContainer}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            useOneTap
+            theme="outline"
+            size="large"
+            text="continue_with"
+            shape="rectangular"
+            width="100%"
+          />
+        </div>
+        
         <p className={styles.footerText}>
           Not signed up yet?{" "}
           <span className={styles.signupLink} onClick={()=>navigate('/signup')}>
