@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from "../Styles/Post_Project.module.css";
 
 function Project_Edit() {
   const username = localStorage.getItem("username");
-  const location = useLocation();
+  const navigate = useNavigate();
   const project = location.state;
   
  
@@ -57,6 +57,9 @@ function Project_Edit() {
         }
        );
       toast.success(response?.data?.message || "Project updated successfully!");
+      setTimeout(() => {
+        navigate("/projects");
+      },  500);
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
     }

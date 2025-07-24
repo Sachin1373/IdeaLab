@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import axios from 'axios';
@@ -7,10 +7,8 @@ import styles from "../Styles/Post_Idea.module.css";
 
 function Idea_Edit() {
 
-    const username = localStorage.getItem("username");
-
-    const navigate = useNavigate()
-  const location = useLocation()
+  const username = localStorage.getItem("username");
+  const navigate = useNavigate()
 
   const idea = location.state
 
@@ -68,6 +66,9 @@ function Idea_Edit() {
         }
       );
       toast.success(response?.data?.message || "Idea posted successfully!");
+      setTimeout(() => {
+        navigate("/ideas");
+      }, 500);
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong! Please try again.");
     }
