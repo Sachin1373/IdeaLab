@@ -12,11 +12,18 @@ import Idea_Edit from './Components/Idea_Edit.jsx';
 import Post_Idea from './Components/Post_Idea.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar.jsx';
+import PrivateRoute from './routes/PrivateRoute.jsx';
+import { useLocation } from 'react-router-dom';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideNavbarRoutes = ['/login', '/signup'];
+
+  const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
+
   return (
-    <Router>
-      <Navbar />
+    <>
+      {!shouldHideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
@@ -24,12 +31,22 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/postproject" element={<Post_Project />} />
-        <Route path="/postidea" element={<Post_Idea />} />
-        <Route path="/postedit" element={<Project_Edit />} />
-        <Route path="/ideaedit" element={<Idea_Edit />} />
+
+        {/* Protected Routes */}
+        <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="/postproject" element={<PrivateRoute><Post_Project /></PrivateRoute>} />
+        <Route path="/postidea" element={<PrivateRoute><Post_Idea /></PrivateRoute>} />
+        <Route path="/postedit" element={<PrivateRoute><Project_Edit /></PrivateRoute>} />
+        <Route path="/ideaedit" element={<PrivateRoute><Idea_Edit /></PrivateRoute>} />
       </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

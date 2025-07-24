@@ -27,12 +27,6 @@ function Footer() {
           <NavLink to="/blog" className={styles.link} activeClassName={styles.activeLink}>
             Blog
           </NavLink>
-          <NavLink to="/login" className={styles.link} activeClassName={styles.activeLink}>
-            Login
-          </NavLink>
-          <NavLink to="/signup" className={styles.link} activeClassName={styles.activeLink}>
-            Signup
-          </NavLink>
         </div>
 
         <div className={styles.socialMedia}>

@@ -62,39 +62,41 @@ function Projects() {
 
   return (
     <>
-      <h1>All Projects</h1>
+      <div className={styles.projectsContainer}>
+        <h1>Projects</h1>
 
-      <div className={styles.filters}>
-        <input
-          type="text"
-          placeholder="Search by title or skills..."
-          value={searchTerm}
-          onChange={handleSearch}
-          className={styles.searchInput}
-        />
-        <select
-          value={filterStatus}
-          onChange={handleFilterChange}
-          className={styles.filterSelect}
-        >
-          <option value="all">All Projects</option>
-          <option value="open">Open</option>
-          <option value="closed">Closed</option>
-        </select>
-      </div>
+        <div className={styles.filters}>
+          <input
+            type="text"
+            placeholder="Search by title or skills..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className={styles.searchInput}
+          />
+          <select
+            value={filterStatus}
+            onChange={handleFilterChange}
+            className={styles.filterSelect}
+          >
+            <option value="all">All Projects</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+          </select>
+        </div>
 
-      <div className={styles.project_wrapper}>
-        {isLoading ? (
-          <Spinner />
-        ) : error ? (
-          <p className={styles.error}>{error}</p>
-        ) : filteredProjects.length === 0 ? (
-          <p>No projects found.</p>
-        ) : (
-          filteredProjects.map((project) => (
-            <Projects_card key={project.id} project={project} />
-          ))
-        )}
+        <div className={styles.project_wrapper}>
+          {isLoading ? (
+            <Spinner />
+          ) : error ? (
+            <p className={styles.error}>{error}</p>
+          ) : filteredProjects.length === 0 ? (
+            <p>No projects found.</p>
+          ) : (
+            filteredProjects.map((project) => (
+              <Projects_card key={project.id} project={project} />
+            ))
+          )}
+        </div>
       </div>
     </>
   );

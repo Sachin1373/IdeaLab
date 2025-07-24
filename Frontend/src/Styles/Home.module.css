@@ -7,9 +7,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center;  */
+  align-items: center; 
   text-align: center;
-  padding: 80px 20px;
 }
 .spinnerWrapper {
   display: flex;

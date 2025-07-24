@@ -32,29 +32,31 @@ function Ideas() {
 
   return (
     <div className={styles.ideasContainer}>
-      <h1 className={styles.heading}>All Ideas</h1>
+    <h1 className={styles.heading}>Ideas</h1>
 
+     <div className={styles.ideasWrapper}>
       {isLoading ? (
-        <div className={styles.spinnerWrapper}>
-           <Spinner/>
-        </div>
-      ) : error ? (
-        <p className={styles.error}>{error}</p>
-      ) : (
-        <>
-          <div className={styles.gridContainer}>
-            {ideas.slice(0, visibleIdeas).map((idea) => (
-              <Ideas_card key={idea.id} Idea={idea} />
-            ))}
+          <div className={styles.spinnerWrapper}>
+            <Spinner/>
           </div>
+        ) : error ? (
+          <p className={styles.error}>{error}</p>
+        ) : (
+          <>
+            <div className={styles.gridContainer}>
+              {ideas.slice(0, visibleIdeas).map((idea) => (
+                <Ideas_card key={idea.id} Idea={idea} />
+              ))}
+            </div>
 
-          {visibleIdeas < ideas.length && (
-            <button className={styles.loadMoreButton} onClick={handleLoadMore}>
-              Load More
-            </button>
-          )}
-        </>
-      )}
+            {visibleIdeas < ideas.length && (
+              <button className={styles.loadMoreButton} onClick={handleLoadMore}>
+                Load More
+              </button>
+            )}
+          </>
+        )}
+     </div>
     </div>
   );
 }

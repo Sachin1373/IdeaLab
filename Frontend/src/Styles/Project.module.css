@@ -4,7 +4,11 @@
     justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
-  }
+}
+
+.projectsContainer {
+    padding: 10px 220px;
+}
   
   .searchInput {
     padding: 8px;
@@ -23,16 +27,10 @@
   }
 .project_wrapper {
     display: flex;
-    width: 100%;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
-    padding: 0 80px;
-    margin-bottom: 100px;
-    row-gap: 30px;
-    height: auto;
-    flex-grow: 1; 
-    gap: 2rem;
+    gap: 5rem;
+    margin-top: 4rem;
   }
 
   .loadingText{
