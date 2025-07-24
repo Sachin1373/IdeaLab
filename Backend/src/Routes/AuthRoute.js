@@ -65,11 +65,8 @@ router.post('/login', asynchandler(async (req, res) => {
 // ------------------- GOOGLE AUTH -------------------
 
 router.post('/google-login', asynchandler(async (req, res) => {
-    console.log('✅ Incoming Request Body:', req.body);
-  
     const { tokenId } = req.body;
     if (!tokenId) {
-      console.error('❌ tokenId missing from request');
       return res.status(400).json({ message: 'Token missing' });
     }
   
@@ -79,14 +76,11 @@ router.post('/google-login', asynchandler(async (req, res) => {
         audience: process.env.GOOGLE_CLIENT_ID,
       });
   
-      const payload = ticket.getPayload();
-      console.log('✅ Google Token Payload:', payload);
-  
+      const payload = ticket.getPayload();  
       const { email, name, sub: googleId } = payload;
   
       let user = await User.findOne({ email });
       if (!user) {
-        console.log('ℹ️ New user - creating in DB');
         user = await User.create({
           name,
           username: email.split('@')[0],
@@ -95,7 +89,6 @@ router.post('/google-login', asynchandler(async (req, res) => {
           googleId: googleId,
         });
       } else {
-        console.log('✅ Existing user found');
         // Update googleId if not present
         if (!user.googleId) {
           user.googleId = googleId;
@@ -113,7 +106,6 @@ router.post('/google-login', asynchandler(async (req, res) => {
         email: user.email,
       });
     } catch (error) {
-      console.error('❌ Error verifying Google token:', error);
       res.status(401).json({ message: 'Invalid Google token' });
     }
   }));

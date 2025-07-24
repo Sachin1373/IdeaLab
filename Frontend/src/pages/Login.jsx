@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
 import styles from "../Styles/Login.module.css";
 
 function Login() {
@@ -43,9 +42,6 @@ function Login() {
 
     const handleGoogleSuccess = async (credentialResponse) => {
       try {
-        const decoded = jwtDecode(credentialResponse.credential);
-        console.log('Google Login Success:', decoded);
-        
         const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/google-login", {
           tokenId: credentialResponse.credential
         });

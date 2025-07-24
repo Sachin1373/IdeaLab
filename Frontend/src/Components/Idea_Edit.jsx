@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css"; 
 import axios from 'axios';
@@ -9,7 +9,7 @@ function Idea_Edit() {
 
   const username = localStorage.getItem("username");
   const navigate = useNavigate()
-
+  const location = useLocation();
   const idea = location.state
 
   
@@ -43,21 +43,16 @@ function Idea_Edit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Ensure creatorName is filled in
     if (!formData.creatorName) {
       toast.error("Username is required to post an idea!");
       return;
     }
-
-    // Prepare the techstack as an array
     const ideaData = {
       ...formData,
       techstack: formData?.techstack?.split(',').map(item => item.trim()) 
     };
 
     try {
-      // Send POST request to the backend API
       const response = await axios.put(`https://idealab-1-backend.onrender.com/api/v1/ideas/update/${idea._id}`, ideaData,
         {
           headers: {
