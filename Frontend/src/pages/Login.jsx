@@ -12,8 +12,9 @@ function Login() {
     email : "",
     password : "",
     })
-const navigate = useNavigate();
-    const handlechange = (e) =>{
+  const navigate = useNavigate();
+
+  const handlechange = (e) =>{
       const {id,value} = e.target
       setlogindata((prevdata)=>({
         ...prevdata,
@@ -24,7 +25,7 @@ const navigate = useNavigate();
     const handlesubmit = async(e) =>{
       e.preventDefault();
       try {
-        const response = await axios.post("https://localhost/api/v1/auth/login",logindata)
+        const response = await axios.post("https://idealab-1-backend.onrender.com/api/v1/auth/login",logindata)
         const username = response.data.username
         const token = response.data.token
         const email = response.data.email
@@ -57,7 +58,7 @@ const navigate = useNavigate();
         toast.success("Google login successful!");
         setTimeout(() => {
           navigate("/");
-        }, 1500);
+        }, 500);
       } catch (error) {
         console.error('Google login error:', error);
         toast.error(error.response?.data?.message || "Google login failed. Please try again.");
@@ -100,7 +101,7 @@ const navigate = useNavigate();
         
         {/* Divider */}
         <div className={styles.divider}>
-          <span>OR</span>
+          {/* <span>OR</span> */}
         </div>
         
         {/* Google Login */}

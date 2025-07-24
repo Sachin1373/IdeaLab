@@ -115,7 +115,7 @@ function SignUp() {
         
         {/* Divider */}
         <div className={styles.divider}>
-          <span>OR</span>
+          {/* <span>OR</span> */}
         </div>
         
         {/* Google Signup */}
