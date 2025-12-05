@@ -29,7 +29,7 @@ function Ideas() {
     // Set interval to call every 1 minute
     const interval = setInterval(() => {
       getAllIdeas();
-    }, 500); // 60000 ms = 1 minute
+    }, 1000); // 60000 ms = 1 minute
   
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
