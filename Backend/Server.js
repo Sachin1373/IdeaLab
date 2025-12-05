@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: "Something went wrong!" });
   });
 
-  app.use(expressAnalytics("081b9027-52c7-4144-a06e-bdf4089032fd")); 
+app.use(expressAnalytics("081b9027-52c7-4144-a06e-bdf4089032fd")); 
 
 //basic route
 app.get("/api/v1", (req, res) => {
