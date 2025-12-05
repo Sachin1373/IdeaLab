@@ -10,6 +10,7 @@ import connectdb from "./src/Config/Database.js"
 import ProjectRoutes from "./src/Routes/ProjectsRoutes.js"
 import IdeasRouter from "./src/Routes/IdeasRoutes.js"
 import AuthRoute from "./src/Routes/AuthRoute.js"
+import { expressAnalytics } from 'node-api-analytics';
  
 dotenv.config({
     path:'./.env'
@@ -36,7 +37,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: "Something went wrong!" });
   });
 
-
+  app.use(expressAnalytics("081b9027-52c7-4144-a06e-bdf4089032fd")); 
 
 //basic route
 app.get("/api/v1", (req, res) => {
