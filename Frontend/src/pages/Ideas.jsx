@@ -23,7 +23,16 @@ function Ideas() {
   };
 
   useEffect(() => {
+    // Call immediately on mount
     getAllIdeas();
+  
+    // Set interval to call every 1 minute
+    const interval = setInterval(() => {
+      getAllIdeas();
+    }, 6000); // 60000 ms = 1 minute
+  
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
   }, []);
 
   const handleLoadMore = () => {
